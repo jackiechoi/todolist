@@ -15,18 +15,27 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use("/public", express.static("public"));
 
-//create a user schema
 var todoSchema = new mongoose.Schema({
-    content: String
+    text: String
 });
 
-//create a user model
-var todoModel = mongoose.model("todo", todoSchema);
+var todo = mongoose.model("todo_collection", todoSchema);
 
 app.get('/', function(req, res){
-	res.render('index');
+	res.redirect('index');
 })
-
+// app.get('/index', function(req, res){
+// 	todo.find({}, function(err, allTodos){
+// 		if(err){
+// 			console.log(err)
+// 		}else{
+// 			res.render('index', {allTodos: allTodos})
+// 		}
+// 	})
+// })
+// app.post('/index', function(req, res){
+// 	console.log(req.body);
+// })
 
 app.listen(process.env.PORT || 3001, function(){
 	console.log("todolist working!")
