@@ -22,7 +22,7 @@ var todoSchema = new mongoose.Schema({
 var todo = mongoose.model("todo_collection", todoSchema);
 
 app.get('/', function(req, res){
-	res.redirect('index');
+	res.render('index');
 })
 // app.get('/index', function(req, res){
 // 	todo.find({}, function(err, allTodos){
